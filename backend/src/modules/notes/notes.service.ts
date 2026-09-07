@@ -1,5 +1,5 @@
 import { NoteModel, INote } from './notes.model';
-import { NotFoundError } from '../../common/errors';
+import { NotFoundError, BadRequestError } from '../../common/errors';
 import { slugify } from '../../common/utils/slug';
 import { PUBLISHING_STATUS, PublishingStatus } from '../../common/constants';
 import { AuditLogService } from '../audit-logs/audit-logs.service';
