@@ -74,7 +74,7 @@ export async function FeaturedJobsSection() {
           </div>
 
           <a
-            href="https://whatsapp.com/channel/0029Vb83otN1SWsvTKibxi1d?utm_source=chatgpt.com"
+            href="https://whatsapp.com/channel/0029VbDKVvNHrDZgmPJIav3O"
             target="_blank"
             rel="noopener noreferrer"
             className="px-5 py-2.5 rounded-xl bg-emerald-500 hover:bg-emerald-400 text-slate-950 text-xs sm:text-sm font-extrabold transition-all shadow-lg shadow-emerald-500/20 shrink-0 inline-flex items-center gap-2 hover:scale-105"

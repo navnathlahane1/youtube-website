@@ -64,7 +64,7 @@ const jobSchema = new Schema<IJob>(
     applyUrl: { type: String, required: true, trim: true },
     whatsappCommunityUrl: {
       type: String,
-      default: 'https://whatsapp.com/channel/0029Vb83otN1SWsvTKibxi1d?utm_source=chatgpt.com',
+      default: 'https://whatsapp.com/channel/0029VbDKVvNHrDZgmPJIav3O',
       trim: true,
     },
     description: { type: String, required: true, trim: true },

@@ -89,7 +89,7 @@ export default async function JobsPage({
           </div>
 
           <a
-            href="https://whatsapp.com/channel/0029Vb83otN1SWsvTKibxi1d?utm_source=chatgpt.com"
+            href="https://whatsapp.com/channel/0029VbDKVvNHrDZgmPJIav3O"
             target="_blank"
             rel="noopener noreferrer"
             className="px-5 py-2.5 rounded-xl bg-emerald-500 hover:bg-emerald-400 text-slate-950 text-xs sm:text-sm font-black transition-all shadow-lg shadow-emerald-500/20 shrink-0 inline-flex items-center gap-2 hover:scale-105"
@@ -255,7 +255,7 @@ export default async function JobsPage({
 
                   <div className="flex items-center gap-2">
                     <a
-                      href={job.whatsappCommunityUrl || 'https://whatsapp.com/channel/0029Vb83otN1SWsvTKibxi1d?utm_source=chatgpt.com'}
+                      href={job.whatsappCommunityUrl || 'https://whatsapp.com/channel/0029VbDKVvNHrDZgmPJIav3O'}
                       target="_blank"
                       rel="noopener noreferrer"
                       className="px-3 py-2 rounded-xl bg-emerald-500/10 hover:bg-emerald-500/20 text-emerald-600 dark:text-emerald-400 border border-emerald-500/20 text-xs font-semibold inline-flex items-center gap-1.5 transition-colors"

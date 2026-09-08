@@ -27,7 +27,7 @@ export default function AdminJobsPage() {
     jobType: 'OFF_CAMPUS',
     workMode: 'HYBRID',
     applyUrl: '',
-    whatsappCommunityUrl: 'https://whatsapp.com/channel/0029Vb83otN1SWsvTKibxi1d?utm_source=chatgpt.com',
+    whatsappCommunityUrl: 'https://whatsapp.com/channel/0029VbDKVvNHrDZgmPJIav3O',
     eligibility: 'Freshers & Experienced (2024, 2025, 2026 Batches)',
     description: '',
     deadline: '',
@@ -52,7 +52,7 @@ export default function AdminJobsPage() {
         applicationDeadline: data.deadline ? new Date(data.deadline) : undefined,
         deadline: data.deadline ? new Date(data.deadline) : undefined,
         status: data.status || 'PUBLISHED',
-        whatsappCommunityUrl: data.whatsappCommunityUrl || 'https://whatsapp.com/channel/0029Vb83otN1SWsvTKibxi1d?utm_source=chatgpt.com',
+        whatsappCommunityUrl: data.whatsappCommunityUrl || 'https://whatsapp.com/channel/0029VbDKVvNHrDZgmPJIav3O',
       };
       return editingItem ? updateJob(editingItem._id, payload) : createJob(payload);
     },
@@ -92,7 +92,7 @@ export default function AdminJobsPage() {
       jobType: 'OFF_CAMPUS',
       workMode: 'HYBRID',
       applyUrl: 'https://www.amazon.jobs/en/jobs/3134249/associate-ml-data-operations-go-ai-operations?utm_source=chatgpt.com',
-      whatsappCommunityUrl: 'https://whatsapp.com/channel/0029Vb83otN1SWsvTKibxi1d?utm_source=chatgpt.com',
+      whatsappCommunityUrl: 'https://whatsapp.com/channel/0029VbDKVvNHrDZgmPJIav3O',
       eligibility: 'Freshers & Experienced',
       description: `Amazon is hiring for the Associate, ML Data Operations role. This is a great opportunity for candidates interested in Machine Learning, Data Operations, AI and technology.
 
@@ -186,7 +186,7 @@ export default function AdminJobsPage() {
                 jobType: row.original.jobType || 'OFF_CAMPUS',
                 workMode: row.original.workMode || 'HYBRID',
                 applyUrl: row.original.applyUrl || '',
-                whatsappCommunityUrl: row.original.whatsappCommunityUrl || 'https://whatsapp.com/channel/0029Vb83otN1SWsvTKibxi1d?utm_source=chatgpt.com',
+                whatsappCommunityUrl: row.original.whatsappCommunityUrl || 'https://whatsapp.com/channel/0029VbDKVvNHrDZgmPJIav3O',
                 eligibility: row.original.eligibility || 'Freshers & Experienced',
                 description: row.original.description || '',
                 deadline: row.original.deadline || row.original.applicationDeadline

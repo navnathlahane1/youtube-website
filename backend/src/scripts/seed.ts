@@ -1282,7 +1282,7 @@ GATE Computer Science requires strong conceptual clarity rather than rote memori
         applicationDeadline: new Date('2026-12-31'),
         deadline: new Date('2026-12-31'),
         applyUrl: 'https://www.amazon.jobs/en/jobs/3134249/associate-ml-data-operations-go-ai-operations?utm_source=chatgpt.com',
-        whatsappCommunityUrl: 'https://whatsapp.com/channel/0029Vb83otN1SWsvTKibxi1d?utm_source=chatgpt.com',
+        whatsappCommunityUrl: 'https://whatsapp.com/channel/0029VbDKVvNHrDZgmPJIav3O',
         description: `Amazon is hiring for the Associate, ML Data Operations role. This is a great opportunity for candidates interested in Machine Learning, Data Operations, AI and technology.
 
 🔹 Work with machine-learning related data operations
@@ -1320,7 +1320,7 @@ GATE Computer Science requires strong conceptual clarity rather than rote memori
         applicationDeadline: new Date('2026-11-30'),
         deadline: new Date('2026-11-30'),
         applyUrl: 'https://nvidia.wd5.myworkdayjobs.com/NVIDIAExternalCareerSite',
-        whatsappCommunityUrl: 'https://whatsapp.com/channel/0029Vb83otN1SWsvTKibxi1d?utm_source=chatgpt.com',
+        whatsappCommunityUrl: 'https://whatsapp.com/channel/0029VbDKVvNHrDZgmPJIav3O',
         description: 'Design and optimize core GPU acceleration software, CUDA runtime libraries, and distributed deep learning infrastructure for next-generation AI platforms.',
         requirements: [
           'Strong proficiency in Modern C++ (17/20) and Data Structures & Algorithms',
@@ -1351,7 +1351,7 @@ GATE Computer Science requires strong conceptual clarity rather than rote memori
         applicationDeadline: new Date('2026-12-15'),
         deadline: new Date('2026-12-15'),
         applyUrl: 'https://careers.microsoft.com',
-        whatsappCommunityUrl: 'https://whatsapp.com/channel/0029Vb83otN1SWsvTKibxi1d?utm_source=chatgpt.com',
+        whatsappCommunityUrl: 'https://whatsapp.com/channel/0029VbDKVvNHrDZgmPJIav3O',
         description: 'Build automated CI/CD pipelines, containerized Kubernetes microservices, and manage high-availability Azure cloud infrastructure.',
         requirements: [
           'Hands-on experience with Docker, Kubernetes, and Linux shell scripting',
@@ -1382,7 +1382,7 @@ GATE Computer Science requires strong conceptual clarity rather than rote memori
         applicationDeadline: new Date('2026-10-31'),
         deadline: new Date('2026-10-31'),
         applyUrl: 'https://nextstep.tcs.com/campus/#/',
-        whatsappCommunityUrl: 'https://whatsapp.com/channel/0029Vb83otN1SWsvTKibxi1d?utm_source=chatgpt.com',
+        whatsappCommunityUrl: 'https://whatsapp.com/channel/0029VbDKVvNHrDZgmPJIav3O',
         description: 'National Qualifier Test (TCS NQT) for Digital & Prime roles. Work on enterprise engineering, modern web applications, and AI analytics.',
         requirements: [
           'Proficiency in any one language: Python, Java, C++, or C#',

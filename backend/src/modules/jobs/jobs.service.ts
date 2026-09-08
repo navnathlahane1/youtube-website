@@ -148,7 +148,7 @@ export class JobsService {
       salaryRange: salary,
       applicationDeadline: deadlineVal,
       deadline: deadlineVal,
-      whatsappCommunityUrl: data.whatsappCommunityUrl || 'https://whatsapp.com/channel/0029Vb83otN1SWsvTKibxi1d?utm_source=chatgpt.com',
+      whatsappCommunityUrl: data.whatsappCommunityUrl || 'https://whatsapp.com/channel/0029VbDKVvNHrDZgmPJIav3O',
       status,
       publishedAt,
       createdBy: actor?.id,

@@ -165,7 +165,7 @@ async function runTests() {
         jobType: 'OFF_CAMPUS',
         workMode: 'HYBRID',
         applyUrl: 'https://www.amazon.jobs/en/jobs/3134249/associate-ml-data-operations-go-ai-operations',
-        whatsappCommunityUrl: 'https://whatsapp.com/channel/0029Vb83otN1SWsvTKibxi1d',
+        whatsappCommunityUrl: 'https://whatsapp.com/channel/0029VbDKVvNHrDZgmPJIav3O',
         eligibility: 'Freshers & Experienced',
         description: 'Amazon is hiring for Associate, ML Data Operations role.',
         deadline: '2026-12-31',
