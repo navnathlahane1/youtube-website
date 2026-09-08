@@ -1,5 +1,6 @@
 import React from 'react';
 import { HeroSection } from '@/components/home/HeroSection';
+import { FeaturedJobsSection } from '@/components/home/FeaturedJobsSection';
 import { FeaturedCourses } from '@/components/home/FeaturedCourses';
 import { WhyChooseUs } from '@/components/home/WhyChooseUs';
 import { AcademicExplorer } from '@/components/home/AcademicExplorer';
@@ -16,32 +17,36 @@ export default function HomePage() {
       {/* 1. Hero Section */}
       <HeroSection />
 
-      {/* 2. Featured Offline Courses & Batches */}
+      {/* 2. Top Engineering Jobs & Off-Campus Hiring Hub (Live Drives) */}
+      <FeaturedJobsSection />
+
+      {/* 3. Featured Offline Courses & Batches */}
       <FeaturedCourses />
 
-      {/* 3. Why Choose Us (Offline Center Amenities & Pedigree) */}
+      {/* 4. Why Choose Us (Offline Center Amenities & Pedigree) */}
       <WhyChooseUs />
 
-      {/* 4. Academic Explorer (Interactive Hierarchy) */}
+      {/* 5. Academic Explorer (Interactive Hierarchy) */}
       <AcademicExplorer />
 
-      {/* 5. Engineering Resources (PYQs, Notes, Videos, Projects) */}
+      {/* 6. Engineering Resources (PYQs, Notes, Videos, Projects) */}
       <FeaturedResources />
 
-      {/* 6. Star Faculty Showcase */}
+      {/* 7. Star Faculty Showcase */}
       <StarFaculty />
 
-      {/* 7. Student Placement Results & Hall of Fame */}
+      {/* 8. Student Placement Results & Hall of Fame */}
       <StudentResults />
 
-      {/* 8. Upcoming Batch Timetable */}
+      {/* 9. Upcoming Batch Timetable */}
       <UpcomingBatches />
 
-      {/* 9. Center Workshops & Hackathons */}
+      {/* 10. Center Workshops & Hackathons */}
       <CenterEvents />
 
-      {/* 10. Offline Demo Booking & Counseling CTA */}
+      {/* 11. Offline Demo Booking & Counseling CTA */}
       <LeadCaptureSection />
     </div>
   );
 }
+

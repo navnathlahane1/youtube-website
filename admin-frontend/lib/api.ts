@@ -141,7 +141,7 @@ export const getJobs = (params: any = {}) => {
   Object.entries(params).forEach(([k, v]) => {
     if (v !== undefined && v !== '') query.append(k, String(v));
   });
-  return fetchAdminApi(`/jobs?${query.toString()}`);
+  return fetchAdminApi(`/jobs/admin/all?${query.toString()}`).catch(() => fetchAdminApi(`/jobs?${query.toString()}`));
 };
 export const createJob = (data: any) => fetchAdminApi('/jobs', { method: 'POST', body: JSON.stringify(data) });
 export const updateJob = (id: string, data: any) => fetchAdminApi(`/jobs/${id}`, { method: 'PUT', body: JSON.stringify(data) });

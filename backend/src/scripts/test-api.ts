@@ -16,61 +16,38 @@ async function runTests() {
     logger.info('🧪 Starting Backend API Automated Verification Suite...');
     await connectDatabase();
 
-    // Seed test data in the test database instance
-    const passwordHash = await hashPassword('Admin@12345');
-    const admin = await AdminModel.create({
-      name: 'Test Super Admin',
-      email: 'admin@engineering.edu',
-      passwordHash,
-      role: ADMIN_ROLES.SUPER_ADMIN,
-      isActive: true,
-    });
+    // Find or create test entities
+    let admin = await AdminModel.findOne({ email: 'admin@engineering.edu' });
+    if (!admin) {
+      const passwordHash = await hashPassword('Admin@12345');
+      admin = await AdminModel.create({
+        name: 'Test Super Admin',
+        email: 'admin@engineering.edu',
+        passwordHash,
+        role: ADMIN_ROLES.SUPER_ADMIN,
+        isActive: true,
+      });
+    }
 
-    const year = await AcademicYearModel.create({
-      name: 'Third Year (TE)',
-      code: 'TE',
-      order: 3,
-    });
+    let branch = await BranchModel.findOne({ code: 'CSE' });
+    if (!branch) {
+      branch = await BranchModel.create({
+        name: 'Computer Science & Engineering',
+        code: 'CSE',
+        slug: 'cse',
+        totalSemesters: 8,
+        order: 1,
+      });
+    }
 
-    const branch = await BranchModel.create({
-      name: 'Computer Science & Engineering',
-      code: 'CSE',
-      slug: 'cse',
-      totalSemesters: 8,
-      order: 1,
-    });
-
-    const sem = await SemesterModel.create({
-      number: 5,
-      name: 'Semester 5',
-      slug: 'sem-5',
-      academicYearId: year._id,
-    });
-
-    const subject = await SubjectModel.create({
-      name: 'Database Management Systems',
-      code: 'CS501',
-      slug: 'database-management-systems-cs501',
-      branchId: branch._id,
-      semesterId: sem._id,
-      credits: 4,
-      units: [{ unitNumber: 1, title: 'ER Modeling', keyTopics: ['ER Diagram'] }],
-    });
-
-    await PYQModel.create({
-      title: 'DBMS 2024 Question Paper with Solutions',
-      slug: 'dbms-2024-question-paper',
-      subjectId: subject._id,
-      branchId: branch._id,
-      semesterId: sem._id,
-      year: 2024,
-      examType: 'End-Sem',
-      questionPaperUrl: 'https://sample.pdf',
-      difficulty: DIFFICULTY_LEVELS.INTERMEDIATE,
-      status: PUBLISHING_STATUS.PUBLISHED,
-      publishedAt: new Date(),
-      createdBy: admin._id,
-    });
+    let sem = await SemesterModel.findOne({ number: 5 });
+    if (!sem) {
+      sem = await SemesterModel.create({
+        number: 5,
+        name: 'Semester 5',
+        slug: 'sem-5',
+      });
+    }
 
     const server = http.createServer(app);
     await new Promise<void>((resolve) => server.listen(0, resolve));
@@ -169,6 +146,39 @@ async function runTests() {
     });
     if (auditRes.status !== 200 || !auditRes.data?.success) throw new Error('Audit logs fetch failed');
     logger.info(`   ✅ Audit trail contains ${auditRes.data.data.length || 0} recorded operations.`);
+
+    // 9. Jobs & Careers Hub Endpoints
+    logger.info('9️⃣ Testing Jobs API & Admin Creation Flow...');
+    const publicJobs = await request('/jobs');
+    if (publicJobs.status !== 200 || !publicJobs.data?.success) throw new Error('Public jobs fetch failed');
+    logger.info(`   ✅ Public jobs endpoint returned ${publicJobs.data.data.length} active jobs.`);
+
+    // Test creating a new job through Admin API
+    const newJobRes = await request('/jobs', {
+      method: 'POST',
+      headers: { Authorization: `Bearer ${token}` },
+      body: JSON.stringify({
+        title: 'Associate, ML Data Operations',
+        companyName: 'Amazon',
+        location: 'Hyderabad / Pune / Hybrid',
+        salaryRange: '₹4.5 - 7.5 LPA',
+        jobType: 'OFF_CAMPUS',
+        workMode: 'HYBRID',
+        applyUrl: 'https://www.amazon.jobs/en/jobs/3134249/associate-ml-data-operations-go-ai-operations',
+        whatsappCommunityUrl: 'https://whatsapp.com/channel/0029Vb83otN1SWsvTKibxi1d',
+        eligibility: 'Freshers & Experienced',
+        description: 'Amazon is hiring for Associate, ML Data Operations role.',
+        deadline: '2026-12-31',
+        status: 'PUBLISHED',
+      }),
+    });
+    if (newJobRes.status !== 201 || !newJobRes.data?.success) throw new Error(`Job creation failed: ${newJobRes.data?.message}`);
+    logger.info(`   ✅ Admin job creation succeeded for Amazon role (ID: ${newJobRes.data.data._id})`);
+
+    // Test track apply click
+    const applyClickRes = await request(`/jobs/apply/${newJobRes.data.data._id}`, { method: 'POST' });
+    if (applyClickRes.status !== 200) throw new Error('Apply click tracking failed');
+    logger.info('   ✅ Job application click tracking verified.');
 
     logger.info('✨ ALL BACKEND API AUTOMATED TESTS PASSED WITH 100% SUCCESS! 🚀');
 

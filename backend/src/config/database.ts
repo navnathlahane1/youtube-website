@@ -3,8 +3,8 @@ import mongoose from 'mongoose';
 import { env } from './env';
 import { logger } from './logger';
 
-// Set public DNS servers only for local Windows dev if needed (never on Vercel/Lambda)
-if (env.NODE_ENV !== 'production' && !process.env.VERCEL) {
+// Set public DNS servers for local / Windows dev if needed (never on Vercel/Lambda)
+if (!process.env.VERCEL && !process.env.AWS_LAMBDA_FUNCTION_NAME) {
   try {
     dns.setServers(['8.8.8.8', '8.8.4.4', '1.1.1.1', '1.0.0.1']);
   } catch {
@@ -41,7 +41,7 @@ export async function connectDatabase(): Promise<typeof mongoose> {
     return cached.conn;
   }
 
-  const isServerlessOrProd = env.NODE_ENV === 'production' || !!process.env.VERCEL;
+  const isVercel = !!process.env.VERCEL;
   const uri = env.MONGODB_URI;
 
   mongoose.set('strictQuery', true);
@@ -66,8 +66,8 @@ export async function connectDatabase(): Promise<typeof mongoose> {
     try {
       logger.info('🔗 Connecting to MongoDB Atlas cluster...');
       cached.promise = mongoose.connect(uri, {
-        autoIndex: !isServerlessOrProd, // Disable automatic index builds in serverless to reduce latency
-        serverSelectionTimeoutMS: 10000,
+        autoIndex: !isVercel,
+        serverSelectionTimeoutMS: 8000,
         bufferCommands: false,
       });
 
@@ -75,7 +75,7 @@ export async function connectDatabase(): Promise<typeof mongoose> {
       return cached.conn;
     } catch (error: any) {
       cached.promise = null;
-      if (isServerlessOrProd) {
+      if (isVercel) {
         logger.error(`❌ Failed to connect to MongoDB in production: ${error.message}`);
         throw new Error(`MongoDB connection failed: ${error.message}. Please verify MONGODB_URI on Vercel.`);
       }
@@ -83,8 +83,8 @@ export async function connectDatabase(): Promise<typeof mongoose> {
     }
   }
 
-  // 2. In production or Vercel, in-memory DB is prohibited
-  if (isServerlessOrProd) {
+  // 2. In Vercel serverless, in-memory DB is prohibited
+  if (isVercel) {
     throw new Error('MONGODB_URI environment variable is required in production/Vercel environments.');
   }
 
