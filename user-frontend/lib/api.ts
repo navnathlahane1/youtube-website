@@ -83,16 +83,48 @@ export const getProjects = (params: { branchId?: string; category?: string; tech
 };
 export const getProjectBySlug = (slug: string) => fetchApi(`/projects/view/${slug}`);
 
+import { DEFAULT_JOBS } from './fallback-data';
+
 // 6. Careers & Jobs
-export const getJobs = (params: { branchId?: string; jobType?: string; workMode?: string; search?: string; page?: number; limit?: number } = {}) => {
+export const getJobs = async (params: { branchId?: string; jobType?: string; workMode?: string; search?: string; page?: number; limit?: number } = {}) => {
   const query = new URLSearchParams();
   Object.entries(params).forEach(([k, v]) => {
     if (v !== undefined && v !== '') query.append(k, String(v));
   });
-  return fetchApi(`/jobs?${query.toString()}`);
+
+  const getFilteredDefaults = () => {
+    let filtered = [...DEFAULT_JOBS];
+    if (params.jobType) {
+      filtered = filtered.filter((j) => j.jobType === params.jobType);
+    }
+    if (params.workMode) {
+      filtered = filtered.filter((j) => j.workMode === params.workMode);
+    }
+    if (params.search) {
+      const q = params.search.toLowerCase();
+      filtered = filtered.filter((j) => j.title.toLowerCase().includes(q) || j.companyName.toLowerCase().includes(q) || j.description.toLowerCase().includes(q));
+    }
+    return { items: filtered, total: filtered.length, page: 1, limit: params.limit || 12 };
+  };
+
+  try {
+    const res = await fetchApi(`/jobs?${query.toString()}`);
+    if (res && res.items && res.items.length > 0) {
+      return res;
+    }
+    return getFilteredDefaults();
+  } catch {
+    return getFilteredDefaults();
+  }
 };
-export const getJobBySlug = (slug: string) => fetchApi(`/jobs/view/${slug}`);
-export const trackJobApply = (id: string) => fetchApi(`/jobs/apply/${id}`, { method: 'POST' });
+export const getJobBySlug = async (slug: string) => {
+  try {
+    return await fetchApi(`/jobs/view/${slug}`);
+  } catch {
+    return DEFAULT_JOBS.find((j) => j.slug === slug) || DEFAULT_JOBS[0];
+  }
+};
+export const trackJobApply = (id: string) => fetchApi(`/jobs/apply/${id}`, { method: 'POST' }).catch(() => null);
 
 export const getCareerRoadmaps = (params: { type?: string; domain?: string; search?: string } = {}) => {
   const query = new URLSearchParams();
