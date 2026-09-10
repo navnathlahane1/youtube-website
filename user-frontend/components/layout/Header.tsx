@@ -148,12 +148,24 @@ export function Header() {
             <Link
               href="/careers"
               className={`px-3 py-2 rounded-lg text-sm font-medium transition-colors ${
-                pathname.startsWith('/careers')
+                pathname === '/careers' || pathname.startsWith('/careers/')
                   ? 'text-blue-600 dark:text-blue-400 bg-blue-50/70 dark:bg-blue-950/40'
                   : 'text-slate-700 dark:text-slate-200 hover:text-blue-600 hover:bg-slate-100 dark:hover:bg-slate-800/60'
               }`}
             >
               Jobs & Roadmaps
+            </Link>
+
+            {/* Career Counselling */}
+            <Link
+              href="/career-counselling"
+              className={`flex items-center gap-1 px-3 py-2 rounded-lg text-sm font-medium transition-colors ${
+                pathname.startsWith('/career-counselling')
+                  ? 'text-purple-600 dark:text-purple-400 bg-purple-50/70 dark:bg-purple-950/40 font-semibold'
+                  : 'text-slate-700 dark:text-slate-200 hover:text-purple-600 hover:bg-slate-100 dark:hover:bg-slate-800/60'
+              }`}
+            >
+              <Compass className="w-3.5 h-3.5 text-purple-500" /> Career Counselling
             </Link>
 
             {/* Faculty */}
@@ -234,6 +246,13 @@ export function Header() {
               className="flex items-center gap-2 p-3 rounded-xl bg-slate-50 dark:bg-slate-800/60 font-medium"
             >
               <FileText className="w-4 h-4 text-amber-500" /> All Resources
+            </Link>
+            <Link
+              href="/career-counselling"
+              onClick={() => setMobileMenuOpen(false)}
+              className="flex items-center gap-2 p-3 rounded-xl bg-purple-50 dark:bg-purple-950/50 text-purple-700 dark:text-purple-300 font-semibold border border-purple-200 dark:border-purple-800/60 col-span-2"
+            >
+              <Compass className="w-4 h-4 text-purple-600 dark:text-purple-400" /> Career Counselling & Roadmaps
             </Link>
             <Link
               href="/pyqs"

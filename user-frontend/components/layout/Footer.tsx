@@ -169,6 +169,11 @@ export function Footer() {
                 </Link>
               </li>
               <li>
+                <Link href="/career-counselling" className="hover:text-purple-400 transition-colors font-semibold text-purple-300">
+                  ★ Free Career Counselling
+                </Link>
+              </li>
+              <li>
                 <Link href="/careers/jobs" className="hover:text-blue-400 transition-colors">
                   Off-Campus Drives & Jobs
                 </Link>

@@ -47,6 +47,12 @@ export default async function CareersPage() {
               >
                 <Briefcase className="w-4 h-4" /> Explore Active Job Openings
               </Link>
+              <Link
+                href="/career-counselling"
+                className="px-6 py-3 rounded-xl bg-purple-600 hover:bg-purple-700 text-white font-semibold transition-colors shadow-lg shadow-purple-600/20 inline-flex items-center gap-2 text-sm"
+              >
+                <Compass className="w-4 h-4" /> Free Career Counselling
+              </Link>
               <a
                 href="#roadmaps"
                 className="px-6 py-3 rounded-xl bg-surface-elevated text-text-primary font-semibold hover:border-primary/50 transition-colors border border-border inline-flex items-center gap-2 text-sm"
@@ -55,6 +61,25 @@ export default async function CareersPage() {
               </a>
             </div>
           </div>
+        </div>
+
+        {/* Career Counselling Highlight Banner */}
+        <div className="mb-12 p-6 rounded-3xl bg-gradient-to-r from-purple-900/90 via-indigo-900/90 to-slate-900/90 border border-purple-500/30 text-white flex flex-col md:flex-row items-center justify-between gap-6 shadow-xl">
+          <div className="space-y-1 text-center md:text-left">
+            <span className="px-2.5 py-0.5 rounded-full text-[10px] font-black uppercase bg-purple-500 text-white">
+              ★ 1-on-1 Guidance Desk
+            </span>
+            <h3 className="text-xl font-bold text-white">Not Sure Which Engineering Path Fits You?</h3>
+            <p className="text-xs text-purple-200 max-w-xl">
+              Take our interactive AI Career Assessment or book a free 1-on-1 session with Ex-IITian faculty at our Pune learning center.
+            </p>
+          </div>
+          <Link
+            href="/career-counselling"
+            className="px-6 py-3 rounded-xl bg-purple-500 hover:bg-purple-600 text-white font-bold text-xs transition-colors shrink-0 shadow-lg flex items-center gap-1.5"
+          >
+            Start Career Assessment <ArrowRight className="w-4 h-4" />
+          </Link>
         </div>
 
         {/* Quick Stats Grid */}
